@@ -1,47 +1,71 @@
 # Video Generation Service Integration
+
 ## Ticket ID: MOV-001
+
 ### Title
-Implement Core Video Generation Service
+Implement Core Video Generation Service with OpenAI/Sora Integration
+
 ### Description
-Create a service layer to handle video generation using AI. This service will be responsible for processing user prompts and generating corresponding videos using available AI models and FFmpeg for post-processing.
+Develop and integrate a robust video generation service that processes user prompts and generates high-quality videos using AI models. The service should handle prompt processing, video generation, and post-processing while providing real-time status updates.
+
 ### Feature
-Video Generation
+Core Video Generation
+
 ### Related Files
-- src/services/videoGeneration.ts (to be created)
-- src/utils/ffmpeg.ts (to be created)
-- src/types/video.ts (to be created)
+- src/services/videoGeneration.ts
+- src/utils/ffmpeg.ts
+- src/types/video.ts
+- src/config/ai-config.ts
+- src/components/VideoGenerator.tsx
+
 ### Status
 Open
+
 ### Assignee
 Not Assigned
+
 ### Comments
-- Initial implementation will focus on basic video generation
-- Will need to handle various video formats and quality settings
-- Consider implementing a queue system for longer videos
+- Research and integrate with OpenAI's Sora API when available
+- Consider implementing a fallback video generation service
+- Monitor API rate limits and costs
+- Consider implementing video generation queue for scalability
+
 ### Tasks
-1. Set up FFmpeg integration
-2. Create video generation service
-3. Implement prompt processing
-4. Add video format conversion utilities
-5. Implement error handling and validation
-6. Add progress tracking
+1. Set up AI model integration structure
+2. Create video generation service wrapper
+3. Implement prompt validation and processing
+4. Add real-time generation status updates
+5. Create error handling and retry mechanism
+6. Implement video output validation
+7. Add video format conversion utilities
+8. Set up monitoring and logging
+
 ### Technical Details
-- Use FFmpeg for video processing
-- Implement queue system using Redis or similar
-- Handle various video formats (MP4, WebM)
-- Implement proper error handling and logging
-- Add support for different video qualities and lengths
+- Integrate with OpenAI's Sora API
+- Use FFmpeg for video post-processing
+- Implement WebSocket for real-time status updates
+- Set up Redis for job queue management
+- Handle multiple video formats (MP4, WebM)
+- Implement proper error boundaries
+- Add video quality validation
+
 ### Endpoints to Create
 - POST /api/videos/generate
 - GET /api/videos/status/:id
-- GET /api/videos/:id/download
+- GET /api/videos/:id
+- POST /api/videos/:id/regenerate
+
 ### Acceptance Criteria
-- [ ] Service can process text prompts and generate videos
-- [ ] Videos are generated in correct format and quality
-- [ ] Progress updates are provided during generation
-- [ ] Error handling is implemented
-- [ ] API endpoints are properly documented
+- [ ] Service successfully processes text prompts
+- [ ] Videos are generated with high quality
+- [ ] Real-time status updates are provided
+- [ ] Failed generations are properly handled
+- [ ] Generated videos meet quality standards
+- [ ] API rate limits are respected
+- [ ] System handles concurrent requests
+
 ### Estimated Time
-40 hours
+50 hours
+
 ### Priority
-High (Core functionality)
+High (Core Product Feature)
